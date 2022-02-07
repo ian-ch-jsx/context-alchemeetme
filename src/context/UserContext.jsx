@@ -1,4 +1,5 @@
-import { useState, useContext, createContext } from 'react'
+import { useState, useEffect, useContext, createContext } from 'react'
+import fetchUser from '../services/user'
 
 // Create the context we want to use
 const UserContext = createContext()
@@ -7,8 +8,7 @@ const UserContext = createContext()
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState({})
 
-  const context = { user, setUser }
-  return <UserContext.Provider value={context}>{children}</UserContext.Provider>
+  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
 }
 
 // Create custom hook to expose the context value
